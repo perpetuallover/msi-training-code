@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo 11 Ajax using jQuery</title>
+	<script src = "js/jquery-3.1.0.js"></script>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+</head>
+<body>
+	<div id = "example"></div>
+	<script type = "text/babel">
+		var UserInfo = React.createClass({
+			getInitialState: function(){
+				return {
+					firstName: "",
+					lastName: "",
+					age: ""
+				};
+			},
+			componentDidMount: function(){
+				$.get(this.props.source, function(data){
+					var person = data;
+					console.log(person);
+					if(this.isMounted()){
+						this.setState(person);
+					};
+				}.bind(this));
+			},
+			render: function(){
+				return(
+					<div>
+						<p>First Name: {this.state.firstName}</p>
+						<p>Last Name: {this.state.lastName}</p>
+						<p>Age: {this.state.age}</p>
+					</div>
+				);
+			}
+		});
+		ReactDOM.render(
+			<UserInfo source = "/rest/person/"/>,
+			document.getElementById("example")
+		);
+	</script>
+
+</body>
+</html>

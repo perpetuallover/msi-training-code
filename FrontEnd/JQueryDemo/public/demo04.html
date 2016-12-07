@@ -1,0 +1,142 @@
+<!-- event effect: duriation of time -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo04</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> <!-- rel? --> 
+		<script src = "js/jquery-3.1.0.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#first").on("click", function(){
+					$(this).hide(1000, function(){ //slow, fast, normal
+						console.log("first paragraph is hidden");
+					});
+				});
+				$("#second").on("click", function(){
+					$(this).hide("slow", function(){
+						console.log("second paragraph is hidden");
+					});
+				});
+				$("#btn1").on("click", function(){
+					$("#first").hide(500, function(){ // call back function
+						console.log("Hide first paragraph");
+						$("#second").hide(500, function(){
+							console.log("Hide second paragraph");
+						});
+					})
+				});
+				$("#btn2").on("click", function(){
+					$("p").show(1000, function(){
+						console.log("Both paragraphs are displayed");
+					});
+				});
+				$("#btn3").on("click",function(){
+					$.when($("#first").hide(500)).then(function(){ //callback function, then no indent format
+						console.log("Hide first paragraph"); // data can just hold here cant use it elsewhere, people must use it now!
+						$("#second").hide(500);
+					}).then(function(){
+						console.log("Hide second paragraph");
+					});
+				});
+				$("#btn4").on("click", function(){
+					var deferred = $.Deferred(); // defer is wrapper of promise, promise is wrapper of callback
+					$("#first").hide(1000, function(){ // defer can hold the data / object .then must use it when you get it
+						deferred.resolve($(this).text());
+					});
+					deferred.done(function(value){
+						console.log(value);
+					});
+				});
+				$("#myForm").on("submit", function(evt){
+					//default will redirect to another page ...?
+					//get post?
+					evt.preventDefault();
+					//var params = $(this).serialize();
+					
+					var params = {
+						x : $("#x").val(),
+						y : $("#y").val()
+					};
+					console.log(params);
+
+					/*$.ajax({
+						url: "/rest/cal/add/" + $("#x").val() + "/" + $("#y").val(),
+						//url: "/rest/cal/add/",
+						type: "get",
+						dataType: "html",
+						data: params,
+						success: function(resp){
+							console.log(resp);
+						}
+					});*/
+					/*$.ajax({
+						url: "/rest/cal/add",
+						type: "post",
+						dataType: "html",
+						data: params,
+						success: function(resp){
+							console.log(resp);
+						}
+					});*/
+					//every ajax itselt is a promise
+					// $.post("/rest/cal/add", params).then(function(resp){
+					// 	console.log(resp);
+					// 	var r = resp;
+					// 	$.post("/rest/cal/multiply", params).then(function(resp2){
+					// 		console.log(resp2);
+					// 		r = r / resp2;
+					// 		$("#result").text(r);
+					// 	});
+					// });
+					//done then can both have 2 params
+					//ajax call, post, serialize
+					$.when(
+						$.post("/rest/cal/add", params),
+						$.post("/rest/cal/multiply", params)
+					).done(function(value1, value2){
+						console.log(value1); 
+						console.log(value2);
+						$("#result").text(value1[0] / value2[0]);
+					}); //e.g. dea number validation
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class = "container">
+			<h1>JQuery Animation</h1>
+			<hr>
+			<p id = "first">First Paragraph</p>
+			<p id = "second">Second Paragraph</p>
+			<button id = "btn1" class = "btn btn-primary">Hide one by one</button>
+			<button id = "btn2" class = "btn btn-primary">Show at the same time</button>
+			<button id = "btn3" class = "btn btn-default">Hide2 one by one using then</button>
+			<button id = "btn4" class = "btn btn-default">Promise</button>
+			<hr>
+			<h2>AJAX Call</h2>
+			<div>
+			<!-- col system will automatically use the responsive design 
+			3 different forms in bootstrap 3WS school bootstrap tutorial css css3 html html5 UI part try it myself!!! !know remember
+			all dclaritive language: no logic-->
+				<form id = "myForm" role = "form" class = "form col-sm-12"> 
+					<div class = "form-group col-sm-4">
+					<!-- highlight the inputfield of corresponding to the id-->
+					<!-- !!!name is for backend id is for front end -->
+						<label for = "x">Input x: </label>
+						<input type = "number" class = "form-control" id = "x" name = "x" placeholder="please input x:" min = "1" max = "100"/>
+					</div>
+					<div class = "form-group col-sm-4">
+						<label>Input y: </label>
+						<input type = "number" class = "form-control" name = "y" id = "y" />
+					</div>
+					<button class = "btn btn-primary" id = "cal" type = "submit">Calculate</button>
+				</form>
+				<div>
+					<h3>Result: <span id = "result"></span></h3>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>

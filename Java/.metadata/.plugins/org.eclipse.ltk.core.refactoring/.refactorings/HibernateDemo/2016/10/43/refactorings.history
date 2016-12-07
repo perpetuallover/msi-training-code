@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;User.hbm.xml&apos; to &apos;SpringHibernate/src/main/java/com.mercury.mappings&apos;&#x0D;&#x0A;- Original project: &apos;HibernateDemo&apos;&#x0D;&#x0A;- Destination element: &apos;SpringHibernate/src/main/java/com.mercury.mappings&apos;&#x0D;&#x0A;- Original element: &apos;User.hbm.xml&apos;" description="Copy file" destination="=SpringHibernate/src\/main\/java&lt;com.mercury.mappings" element1="src/main/java/com/mercury/mappings/User.hbm.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1476820073171" units="0" version="1.0"/>
+</session>

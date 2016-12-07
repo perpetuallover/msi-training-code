@@ -1,0 +1,62 @@
+1. how to make an inheritance
+function Parent() {
+	this.name = "Parent";
+};
+function Child() {};
+
+-Child.prototype = new Parent(); // will inherit every field in Parent
+-Child.prototype = Object.create(Parent.prototype); // will not inheritance field in Parent
+ Child.prototype.constructor = Child;	// only inherit from Parent.prototype
+-var child = new Child();	// only valid for instance(object) inheritance, not work for "Class"
+ child.__proto__ = new Parent(); // level inheritance; .__proto__ is not property of any object
+
+inheritance: when new Child, will new Parent first then new Child
+
+2. how to make C.prototype = Object.create(P.prototype); inherit field in P?
+ / make use of properties from other classes?
+
+-function C(){
+	P.call(this);
+}
+
+-function C2(){
+	this.base = P;
+	this.base();
+}
+
+3. Professional way to write inheritance
+var Parent = function(){
+	this.value = 100;
+};
+
+Parent.prototype.discount = 0.6;
+Parent.prototype.add= function(a, b){
+	return a + b;
+}; // define property in Parent.prototype rather than Parent, eliminate the effection of modify Parent
+
+var Child = function(){
+	// if want to use "value" in Parent class
+	// Parent.call(this);
+};
+Child.prototype = Object.create(Parent.prototype);
+Child.prototype.constructor = Child;
+
+4. How to make(simulate) multiple inheritance in JS
+var A = function(){
+	this.value1 = 100;
+}
+var B = function(){
+	this.value2 = 200;
+}
+var C = function(){
+	A.call(this);
+	B.call(this);
+}
+
+var c = new C();
+console.log(c.value1 + c.value2);
+//*** is simulation of inheritane, no real relationship between C and A / B
+consolo.log(c instanceof A); -> false
+
+
+

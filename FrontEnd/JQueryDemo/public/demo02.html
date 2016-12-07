@@ -1,0 +1,145 @@
+<!-- DOM: document object model -->
+<!-- CSS Box Model; responsive design: adjust to small screen; bootstrap(have all the css u need) is grid system
+border padding:default 0 -->
+<!-- script can either write in the head section or in the body section, code should not appear between vertical lines -->
+<!-- all selectors in Jquery find and modify, append delete CRUD finished til demo02, find from parent to find some thing dynamically or with out the id, class $(child).next .prev .sibling; key of jquer: find and modify-->
+
+<!-- $(document).ready can have a lot vs onload() only 1 in html
+after DOM elements:start from html       all the elements are loaded
+2differnences -->
+<!DOCTYPE html>
+<html id = "html">
+	<head>
+		<title>Demo02</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> <!-- rel? --> 
+		<script src = "js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){ //ready is like then, callback function
+				console.log("first document is loaded...")
+				var items;
+				$("#btn1").click(function(){ // append only firt last porsition
+					$("#itemList").append("<li>Bootstrap by append</li>"); //parent.apend(child) at the end of the list
+					$("<li>MEAN by appendTo</li>").appendTo("#itemList"); //child.apendto(parent)
+				});
+				$("#btn2").click(function(){
+					$("#itemList").prepend("<li>Spring by prepend</li>");
+					$("<li>Hibernate by prependTo</li>").prependTo("#itemList");
+				});
+				$("#btn3").click(function(){
+					$("<h4>A new heading before itemlist</h4>").insertBefore("#itemList"); //insert between brothers
+					// $("#itemList").prepend("<h4>A new heading before itemlist</h4>");
+					//$("<h4>A new heading before itemlist</h4>").after("#itemList"); // A, B existing
+					$("#itemList").find("li").eq(1).before("<li>Python before item</li>");
+					//$("#itemList").before("<h4>A new heading before itemlist</h4>");
+				});
+				$("#btn4").click(function(){
+					$("<h4>A new heading after itemlist</h4>").insertAfter("#itemList");
+					$("#itemList").find("li").eq(1).after("<li>JSON after item</li>");
+				});
+				//interview questions
+				$("#btn5").click(function(){
+					$("#itemList").remove();
+				});
+				$("#btn6").click(function(){ // id class difference when to use?
+					if(!items){
+						items = $("#itemList").detach();//save before move then after can recover
+					}else{
+						$(items).insertAfter("#first");
+						items = null;
+					}
+				});
+				$("#btn7").click(function(){
+					$("#itemList").empty();
+				});
+			});
+			$(document).ready(function(){ // could have more than 1 document function
+				console.log("second document is loaded...");
+				$("#search1").click(function(){// id must be unique while class could use many times on different elements 
+					var child = $("#child");
+					console.log("child's parent: " + child.parent().attr("id"));
+					console.log("child's all parents: ");
+					child.parents().each(function(index, item){
+						console.log($(item).attr("id"));
+					});
+					child.parentsUntil("#mydiv").each(function(index, item){
+						console.log($(item).attr("id"));
+					});
+					console.log("child's closet div: " + child.closest("div").attr("id"));
+					console.log("subchild's closet div: " + $("#subchild").closest("div").attr("id"));
+				});
+				$("#search2").click(function(){
+					var gp = $(grandparent);
+					console.log("All div children of grandparent: "); // find: include subchildern(order: DFS)
+					gp.find("div").each(function(index, item){
+						console.log($(item).attr("id"));
+					});
+					console.log("All direct div children of grandparent: ");
+					gp.children().each(function(index, item){
+					// gp.children("div").each(function(index, item){
+						console.log($(item).attr("id"));
+					});
+				});
+			});
+			function init(){
+				console.log("Init function is executed.");
+			};
+		</script>
+	</head>
+	<body onload = "init()">
+		<div class = "container">
+			<h1>DOM Manipulations</h1>
+			<hr>
+			<div class = "row">
+				<div class = "col-sm-6">
+					<h3 id = "first"> Insert and Delete DOM </h3>
+					<ol id = "itemList"> <!--ol is number table while ur is a normal table-->
+						<li>Java</li>
+						<li>JavaScript</li>
+						<li>Angular</li>
+					</ol>
+					<div style="margin: 10px">
+						<button id = "btn1" class = "btn btn-default">Append</button>
+						<button id = "btn2" class = "btn btn-default">Prepend</button>
+					</div>
+					<div style="margin: 10px">
+						<button id = "btn3" class = "btn btn-primary">Insert Before</button>
+						<button id = "btn4" class = "btn btn-primary">Insert After</button>
+					</div>
+					<div style="margin: 10px">
+						<button id = "btn5" class = "btn btn-danger">Remove</button>
+						<button id = "btn6" class = "btn btn-warning">Detach</button>
+						<button id = "btn7" class = "btn btn-warning">Empty</button>
+					</div>
+				</div>
+
+				<div class = "col-sm-6" id = "mydiv">
+					<h3>Visit Parents and Children</h3>
+					<div id = "grandparent">
+						<p id = "p">Grandparent</p>
+						<div id = "parent" class = "col-sm-4">
+							<p>Parent</p>
+							<div id = "child">
+								<p>Child</p>
+								<span id = "subchild">SubChild</span>
+							</div>
+						</div>
+						<div class="col-sm-4" id="uncle"> <!-- multiple class? -->
+							<p>Uncle</p>
+						</div>
+						<div class = "col-sm-4" id = "aunt">
+							<p>Aunt</p>
+						</div>
+					</div>
+				</div>
+
+				<div style = "margin: 10px">
+					<button id = "search1" class = "btn btn-primary"> Find parent</button>
+					<button id = "search2" class = "btn btn-primary"> Find children</button>
+				</div>
+			</div>
+
+
+		</div>
+		<iframe src = "http://learn.jquery.com"></iframe>
+	</body>
+</html>

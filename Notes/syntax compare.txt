@@ -1,0 +1,27 @@
+1. iterator: each function
+JS: .forEach(function(value, index, array){})
+jQuery: .each(function(index, item){})
+Angular: angular.forEach(array, function(value, index){})
+	$scope.itemList.forEach(function(value,index){})
+
+2. promise
+JS: Promise, return new Promise(function(resolve, reject){}).then(function(value){});
+jQuery: $.when(callback).then(function(value){})
+Angular: $http.get().then(function(value){})
+
+3. defer
+jQuery: var defer = $.Deferred(); defer.resolve(value); defer.done(function(value){console.log(value)});
+Angular: var defer = $q.defer(); defer.resolve(value); defer.promise.then(function(value){});
+
+4. monitor data change
+JS: Object.observe(obj, function(changes){change.type, .name, .oldValue})
+Angular: $scope.$watch("value", function(newValue, oldValue){})
+
+5. event: e.g. click
+JS: <button onclick="function()"></button> // defined outside the controller
+jQuery: $("#btn").click(function(event){}) / $("#btn").on("click", function(){})
+Angular: <button ng-click="function()"></button> // must definded in the controller
+
+6. Ajax call
+jQuery: $.when($.get()).then(function(value){value[0]})
+Angular: $http.get().then(function(resp){resp.data})

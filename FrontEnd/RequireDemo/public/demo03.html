@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo 03</title>
+	<script src = "js/require.js"></script>
+	<script>
+	// async after body is loaded
+		require(["js/c"], function(){
+			console.log("c.js is loaded");
+		});
+	</script>
+</head>
+<body>
+<h1>This page is loaded</h1>
+<p id = "para">This is first paragraph</p>
+</body>
+
+</body>
+</html>

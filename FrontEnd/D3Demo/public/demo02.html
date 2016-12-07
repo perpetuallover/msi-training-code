@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo 02</title>
+	<link rel = "stylesheet" href = "css/bootstrap.min.css" type="text/css">
+	<script src = "js/d3.min.js"></script>
+	<script>
+		function doSelect(){
+			var body = d3.select("body");
+			var p1 = body.select("p"); // Select first paragraph
+			p1.style("color", "red");
+			var p2 = body.select("#second");
+			p2.style("color", "blue");
+			var p3 = body.selectAll(".large");
+			p3.style({
+				"font-size": "20px",
+				"color": "green"
+			})
+		}
+		function doAppend(){
+			var body = d3.select("body");
+			var container = body.select(".container");
+			container.append("p").text("Append a new paragraph");
+			container.insert("h4", "#second").text("Insert a header 4 before 2nd element");
+			//Delete a element
+			container.select("#third").remove();
+		}
+
+	</script>
+</head>
+<body>
+<div class = "container">
+	<h1>Different Selector</h1>
+	<hr>
+	<h2>Select by Tag Name</h2>
+	<p>Apple</p>
+	<hr>
+	<h2>Select by ID</h2>
+	<p id = "second">Banana</p>
+	<p id = "third">Pear </p>
+	<hr>
+	<h2>Select by Class</h2>
+	<p class = "large">Orange</p>
+	<p class = "large">WaterMelon</p>
+	<p class = "large">Grape</p>
+	<hr>
+	<h2>Append</h2>
+	<button class = "btn btn-primary" onclick = "doSelect()">Select</button>
+	<button class="btn btn-primary" onclick="doAppend()">Append</button>
+</div>
+
+</body>
+</html>

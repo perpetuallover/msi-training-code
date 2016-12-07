@@ -1,0 +1,48 @@
+1. user defined CSS block in <head>
+<style>
+	div.mydiv > li > a: hover{	
+		backgournd-color: #111;
+	}
+</style>
+
+2. angular main module and dependent module
+var app = angular.module("mainApp", ["ui-router", "ngAnimate"]);
+
+3. table in HTML
+<table>
+	<thead>
+		<tr>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+// <th></th> means bold and center text format, <td></td> is left align format
+
+4. how to make a field unclickable(looks gray)?
+<input type="text" disabled>
+
+5. for loop in html by using angular tag
+
+<tr ng-repeat="item in itemList">
+	<td>{{$index}}</td> // could use $index to get the item index
+	<td>item.name</td>
+	<td>item.state</td>
+	<td>item.city</td>
+	<td>
+		<button class = "btn btn-link" ng-click = "deleteItem($index)">Remove</button>
+	</td>
+</tr>
+
+6. conditional binding
+- <p ng-show="true">
+- <p ng-hide="control">
+- <p ng-if="count > 20" style="color: green">{{count}}</p>
+difference:
+ng-show / ng-hide will still there but not show, ng-if: the whole block is disappear if the not meet
+the if condition, thus ng-if is better since there won't cause not defined error. 

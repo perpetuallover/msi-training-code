@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+D:\Dropbox\workspace\MSI\Training\Java\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2069361626.index
+1501698831.index
+3966327995.index
+1930516120.index
+3100723525.index
+3785828645.index

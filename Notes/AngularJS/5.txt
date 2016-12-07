@@ -1,0 +1,41 @@
+1. in angular, how to communicate with sibling controllers
+-parent scope : not recommended, because when value has been changed all the inherit value will be affected
+-emit & broadcast
+-angular service: all angular service is singleton
+
+2. namespace in angular
+angular.
+
+3.
+-parent scope:
+app.controller("mainCtrl", ["$scope", function($scope){
+	$scope.account = {
+		value : 1000
+	} // use object
+}])
+
+-emit broadcast
+app.controller("mainCtrl", ["$scope", function($scope){
+	$scope.$on("change", function(event, value){ // $scope.$on to handle event
+		$scope.$broadcast("getchange", value);
+	})
+}])
+app.controller("firstCtrl", ["$scope", function($scope){
+	$scope.value = 100;
+	$scope.$watch("value", function(newVal){
+		$scope.$emit("change", newVal);	
+	})
+}])
+app.controller("secondCtrl", ["$scope", function($scope){
+	$scope.$on("getchange", function(event, value){
+		console.log("value from firstCtrl: " + value);
+	})
+}])
+
+-angular service
+app.value("data",{
+	amount : 80
+})
+app.controller("thirdCtrl", ["$scope", "data", function($scope, data){
+	$scope.data = data;
+}])

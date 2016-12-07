@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="D:\Dropbox\workspace\MSI\Training\JavaEE\SpringREST"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\JavaBasic"/>
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\HibernateJPA"/>
+			<item value="E:\HibernateJPA"/>
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\SpringloC"/>
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\HibernateDemo"/>
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\JDBCDemo"/>
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\SpringAOP"/>
+			<item value="D:\Dropbox\workspace\MSI\Training\Java\JavaMail"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>

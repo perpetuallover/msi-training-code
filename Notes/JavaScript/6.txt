@@ -1,0 +1,21 @@
+1."this"
+inside the function: with new is the var without new is global scope,
+inside the object is the object(most close one).
+
+2. stabilize "this"
+call, apply, bind
+
+function getPrice(num){
+	this.value = 100 * num * this.discount;
+}
+var d = {discount : 0.6};
+setValue.call(d, 10);
+setValue.apply(d, [10]);
+setValue.bind(d)(10); // bind not invoke the function, only specify "this"
+
+3. make the function accept an array as the input
+function add(a, b){
+	return a + b;
+}
+
+add.apply(null, [1, 2]);

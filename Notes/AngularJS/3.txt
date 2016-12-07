@@ -1,0 +1,37 @@
+1. Custom directives:
+4 kinds, naming convention, call format, return an object which contains 6 attributes, meaning, 
+default value, function(scope, element, attr), attr.myAttr, scope.$digest(), 
+Element, Attribute, Class, Comment
+"E"       "A"        "C"    "M"
+<my-element> <p my-attr="Jackson"> <p class="my-class : Alice"> <!-- directive: my-comment -->
+
+app.directive("myElement", function(){
+	return{
+		scope: true, // default false, use parrent scope; true: have own scope
+		restrict: "E", // default "E", "A"
+		template: "<p>{{name}}<p>" / "template/test1.html",
+		transclude: true, // display message inside the tag
+		link: function(scope, element, attr){
+			scope.name = "Lily";
+			element.on("click", function(){
+				scope.value++;
+				//*** customized directive need to call scope.$digest manually to make 
+					the data binding work.
+				scope.$digest();
+				console.log(attr.myClass);
+			});
+		}
+	}
+})
+
+app.directive("myComment", function(){
+	return{
+		scope: false,
+		restrict: "M",
+		template: "<p>show my comment</p>",
+		replace: true // *** the attribute only comment directive has, 
+			//important to make the comment actually shows on the screen			
+	}
+})
+
+<my-element class="my-class: "Lucy"></my-element>

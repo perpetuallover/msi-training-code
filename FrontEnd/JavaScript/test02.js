@@ -1,0 +1,12 @@
+var obj = new Object("abc");
+console.log(obj);
+console.log(typeof obj);
+console.log(obj == "abc");
+console.log(obj === "abc");
+var obj2 = Object("abc");
+console.log(obj2);
+console.log(obj2 == "abc");
+console.log("+++++++++++++++++++++++++++++++++++++");
+var obj3 = {person:"aaa"};
+var obj4 = new Object(obj3);
+console.log(obj3 === obj4);

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo3</title>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+
+		<script type = "text/babel">
+		var params = [
+			<h1>Hello World</h1>,
+			<h2>React is awesome!</h2>
+		];
+		var param2 = 
+			<p>
+				This is another paragraph
+			</p>
+		ReactDOM.render(
+			<div>
+				{params}
+				{param2}
+			</div>,
+			document.getElementById("example")
+		);
+	</script>
+</head>
+<body>
+	<div id = "example"></div>
+
+
+</body>
+</html>

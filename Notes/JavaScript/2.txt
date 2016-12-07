@@ -1,0 +1,23 @@
+1. 6 types in javascript:
+boolean, number, string, object, function, undefined
+
+2. 5 primitive types in javascript:
+boolean, number, string, null, undefined
+primitive types also have corresponding class type(String)
+primitive types are immutable(can't add new field)
+
+3. Object()
+with or without new keyword, (new) Object(parameter) is a function that wraps the input paramter
+(primitive type)as the value, but the type is still Object. However, if the parameter is an object
+it will return parameter itself directly.
+
+so that we could take advantage of Object() to check whether an input parameter's type is Object.
+
+function isObject(obj){
+	return obj === Object(obj);
+}
+* better than typeof(parameter) === "Object" since function is an object but typeof(function(){})
+is "function"
+
+except boolean, number, string, undefined, null(primitive types) everything else in javascript 
+is object(function and object)

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo 05</title>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+</head>
+<body>
+	<div id = "example"></div>
+	<script type = "text/babel">
+		var NodesList = React.createClass({
+			render: function(){
+				return <div>
+					<ol>
+					{
+						React.Children.map(this.props.children, function(child){
+							return <li>{child}</li>
+						})
+					}
+					</ol>
+					<p>The value of x: {this.props.x}</p>
+				</div>
+			}
+		});
+		ReactDOM.render(
+			<NodesList x = "10">
+				<span>Hello</span>
+				<span>World</span>
+				<p>A, B</p>
+				<div>
+					<p>X</p>
+					<p>Y</p>
+				</div>
+				<span>Z</span>
+			</NodesList>,
+			document.getElementById("example")
+		);
+	</script>
+
+</body>
+</html>

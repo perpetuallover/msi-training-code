@@ -1,0 +1,72 @@
+package com.mercury.javamail;
+
+import java.net.*;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.internet.*;
+import javax.activation.*;
+
+public class MyMail {
+	public static void main(String[] args){
+		final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+		Properties prop = System.getProperties();
+		prop.setProperty("mail.smtp.host", "smtp.googlemail.com");
+		prop.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+		prop.setProperty("mail.smtp.socketFactory.fallback", "false");
+		prop.setProperty("mail.smtp.port", "465");
+		prop.setProperty("mail.smtp.socketFactory.port", "465");
+		prop.put("mail.smtp.auth", "true");
+		final String user = "anboi1225@gmail.com";
+		final String password = "liebeyun1225";
+		/*Session session = Session.getDefaultInstance(prop, new Authenticator(){
+			protected PasswordAuthentication getPasswordAuthentication(){
+				return new PasswordAuthentication(user, password);	
+			}
+		});*/
+		Session session = Session.getInstance(prop, new MyAuthenticator(user, password));
+		try{
+			Message msg = new MimeMessage(session);
+			msg.setFrom(new InternetAddress("anboi1225@gmail.com"));
+			//msg.setRecipient(Message.RecipientType.TO, new InternetAddress("tech@mercurysystemsinc.com"));
+			//msg.setRecipient(Message.RecipientType.TO, new InternetAddress("marketing@mercurysystemsinc.com"));
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress("anboi1225@gmail.com"));
+			msg.setSubject("marketing report Kenny An");
+			msg.setSentDate(new Date());
+			
+	         // Create a multipart message
+			 BodyPart bp = new MimeBodyPart();
+	         Multipart multipart = new MimeMultipart();
+	         String filename = "resource/Kenny_Marketing_Status_Report.docx";
+	         // Set text message part	         
+	         DataSource source = new FileDataSource(filename);
+	         // Part two is attachment	         
+	         bp.setDataHandler(new DataHandler(source));
+	         bp.setFileName("Marketing_Status_Report.docx");
+	         multipart.addBodyPart(bp);
+	         
+	         bp = new MimeBodyPart();
+	         String filename2 = "resource/Kenny_Marketing Journal.xlsx";
+	         DataSource source2 = new FileDataSource(filename2);
+	         bp.setDataHandler(new DataHandler(source2));
+	         bp.setFileName("Marketing_Journal.xlsx");
+	         multipart.addBodyPart(bp);
+	         bp = new MimeBodyPart();
+	         
+	         bp.setText("To Whom It May Concern:\n"
+
+						+"	The marketing status report is in the attachment, thanks.\n"
+
+						+"Best Regards,\n"
+						+"Kenny An");
+	         multipart.addBodyPart(bp);
+	         // Send the complete message parts
+	         msg.setContent(multipart);         
+			 Transport.send(msg);
+			 System.out.println("Message sent successfully!");
+		}catch(Exception e){
+			 System.out.println(e);			 
+		}
+	}
+}

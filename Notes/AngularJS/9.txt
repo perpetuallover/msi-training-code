@@ -1,0 +1,29 @@
+1. Angular routing
+ngRoute, ui.router
+
+-DI, config, html tag
+
+var app = angular.module("mainApp", ["ngRoute", "ui.router"]);
+
+app.config(["$routeProvider", function($routeProvider){
+	$routeProvider.when("/home", {
+		templateUrl: "/template/home.html",
+		controller : "homeCtrl"
+	}).when().otherwise(
+		redirectTo : "/home"
+	)
+}])
+
+app.config(["$stateProvider", function($stateProvider){
+	$stateProvider.state("page1", {
+		url : "/page1",
+		templateUrl : "/template/page1.html",
+		controller : "pageCtrl"
+	}).state("page2.sub1")
+}])
+
+<href="#home">
+<ng-view>
+
+<ui-sref="page1">
+<ui-view>

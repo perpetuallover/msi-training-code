@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo04</title>
+	<script src = "js/require.js"></script>
+	<script>
+		require.config({
+			paths: {
+				"first": "js/first", //can use array parameter, will choose which one works
+				"second": "js/second"
+			}
+		});
+		require(["second", "first"], function(){
+			console.log("Both first.js and second.js are loaded");
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>

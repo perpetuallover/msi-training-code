@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Simple Injection -->
+	<bean id="user" class = "com.mercury.beans.User" scope = "prototype">
+		<property name = "name" value = "Alice"/>
+		<property name="sex" value = "female"/>
+		<property name="age" value = "35"/>
+		<!-- <property name="age">
+			<value>35</value>
+		</property> -->
+	</bean>
+	<!-- Constructor Injection -->
+	<bean id = "person" class = "com.mercury.beans.Person">
+		<constructor-arg index="0" value="Bruce"/>
+		<constructor-arg index="1" value="Lee"/>
+	</bean>
+	<!-- Injection for complex bean -->
+	<bean id = "wp" class = "com.mercury.beans.Wrapper">
+	<!-- ref dont need constructer -->
+		<property name = "user" ref="user"/>
+		<property name = "p" ref = "person"/>
+	</bean>
+	<bean id = "wp2" class = "com.mercury.beans.Wrapper" autowire="byName"/>
+	<bean id = "wp3" class = "com.mercury.beans.Wrapper" autowire="byType"/>
+	<!-- @Autowire first use byName then use byType-->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	<bean id = "emp" class = "com.mercury.beans.Employee">
+		<property name = "name" value = "Bob"/>
+	</bean>
+	<bean id = "address" class="com.mercury.beans.Address">
+		<property name = "city" value = "Princeton"/>
+		<property name = "state" value = "NJ"/>
+	</bean>
+	<bean id = "address2" class="com.mercury.beans.Address">
+		<property name = "city" value = "NYC"/>
+		<property name = "state" value = "NY"/>
+	</bean>
+</beans>

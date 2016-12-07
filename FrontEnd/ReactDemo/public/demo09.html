@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo09</title>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+</head>
+<body>
+<div id = "example"></div>
+<script type = "text/babel">
+	// parameter must start with the captalized letter
+	// in javascript new line will lead ";" automatically, interview question
+	// 10 most frequently asked question
+	// react js event driven for data binding
+	var Input = React.createClass({
+		getInitialState: function(){
+			return {value: "Hello!"};
+		},
+		handleChange: function(event){
+			this.setState({value: event.target.value});
+		},
+		render: function(){
+			var value = this.state.value;
+			return(
+				<div>
+					<input type = "text" value = {value} onChange = {this.handleChange}/>
+					<p>{value}</p>
+				</div>
+			);
+		}
+	});
+	ReactDOM.render(
+		<Input />,
+		document.getElementById("example")
+	);
+</script>
+
+</body>
+</html>

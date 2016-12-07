@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo 04</title>
+	<link rel = "stylesheet" href = "css/bootstrap.min.css" type="text/css">
+	<script src = "js/d3.min.js"></script>
+	<script>
+		function doChart(){
+			var svg = d3.select("#linear");
+			var dataSet = [1.2, 2.3, 0.9, 1.5, 3.3];
+			//Use Linear Scale
+			var min = 0; //d3.min(dataSet);
+			var max = d3.max(dataSet);
+			var linear = d3.scale.linear().domain([min, max]).range([0, 300]);//mapping
+
+			var rectHeight = 25;
+			svg.selectAll("rect").data(dataSet)
+				.enter()
+				.append("rect")
+				.attr("x", 20)
+				.attr("y", function(d, i){
+					return i * rectHeight;
+				})
+				.attr("width", function(d){
+					return linear(d);
+				})
+				.attr("height", rectHeight - 2)
+				.attr("fill", "steelblue");
+
+			//Use ordinal scale(usually for pie chart)
+			//var svg2 = d3.select("ordinal");
+			var index = ["a", "b", "c", "d", "e"];
+			var color = ["red", "blue", "green", "yellow", "black"];
+			var ordinal = d3.scale.ordinal().domain(index).range(color);
+			console.log(ordinal("a"));
+		}
+	</script>
+</head>
+<body>
+<div class="container">
+	<h1>D3 Scale System</h1>
+	<hr>
+	<div>
+		<button class = "btn btn-primary" onclick="doChart()">Plot Chart</button>
+		<svg style="width:300px; height:300px;" id = "linear">
+	</div>
+</div>
+</body>
+</html>

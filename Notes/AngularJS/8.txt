@@ -1,0 +1,46 @@
+1. Angular Services:
+value, service, factory, *provider // rare to use provider
+high level, less efficient    -->     low level, high efficient
+
+2.
+-value
+app.value("myValue", {
+	amount : 100
+})
+
+// service is function, closure
+-service
+app.service("myService", function(){
+	this.name = "Alice";
+	this.sayHello = function(){
+		return "Hello " + this.name;
+	}
+})
+
+// return object, which is a singleton, when data first loaded it wont reflect the data changes unless
+// refresh the page
+-factory
+app.factory("myFactory", function(){
+	var count = 0;
+	return{
+		name : "My factory",
+		add : function(){
+			return ++count;
+		}
+	}
+})
+
+-provider
+app.provider("myProvider", function(){...})
+
+3. DI and defer in angular
+
+function defertest($q, $http){
+	var defer = $q.defer();
+	$http.get("/rest/service").then(function(resp){
+		defer.resolve(resp);
+	})
+	return defer.promise;
+}
+
+app.factory("myDefer", ["$q", "$http", defertest]);

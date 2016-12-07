@@ -1,0 +1,85 @@
+1. Closure
+is a function defined in another function, which can access all the fields in the outer function, 
+the outer function fields will still alive even after the outer function is executed(returned).
+
+2. Drawback of Closure
+cause memory leak: the outer field will not be garbage collected
+
+3. How to write a function, when every time execute it, the output value increase 1
+
+var f1 = (function(){
+	var count = 0;
+	return function(){
+		console.log(count++);
+	}
+})();
+
+// simulate the static field(count) in Java
+
+4. Difference between ++a, a++:
+b = ++a; b = a++;
+++a: plus first then do operation(assign value)
+a++: do operation(assign value) first then plus
+
+++a is more efficient in program
+
+5. How to simulate the encapsulation(private field) in Javascript
+var Person = function(name){
+	var obj = {};
+	// getter
+	obj.getName(){
+		return name;
+	}
+	// setter
+	obj.setName(newName){
+		name = newName;
+	}
+	return obj;
+}
+// name is not a property of Person's instance
+6. Dynamic naming space
+var cal = {}; // define naming space: call(object)
+function square(context){
+	var p = 2;
+	context.pow = function(base){
+		return Math.pow(base, p);
+	}
+}
+cal.pow(3) == 9;
+
+7. Singleton Class in JS
+
+var Singleton = (function(){
+	var singleton;
+	return{
+		getInstance: function(){
+			if(!singleton){
+				singleton = new Object();
+			}
+			return singleton;
+		}
+	}
+})()
+var s = Singleton.getInstance();
+// ***using self-invoke function to ensure Singlton is the only one copy of the returned object
+
+8. Print 1 to 10 after 1sec(One by One)
+for(var i = 0; i < 10; i++){
+	setTimeout(printIndex(i), 200 * i);
+}
+function printIndex(i){
+	return function(){
+		console.log(i);
+	}
+}
+//* setTimeout function will run the function first, then do the delay and 
+//* there are 2 queues in JS, one for normal function, the other for delayed(setTimeout) function
+//* only after all the normal functions executed, system begin to run delayed function
+
+9. In JS 1 / 0
+
+=== Infinity
+
+typeof Infinity === number; !(Infinity === Infinity) == true
+
+if(null) == if(false)

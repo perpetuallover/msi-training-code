@@ -1,0 +1,74 @@
+1. jQuery
+is a library of JavaScript which makes HTML document traversal, manipulation, event handling,
+animation and Ajax much simpler; key feature: selector
+
+2. The begining of jQuery
+<script>
+	$(document).ready(function(){
+		...
+	})
+</script>
+
+2. Traditional Pure JavaScript selector:
+obj.getElementById().innerHTML = "<p>...</p>"
+
+3. DOM, HTML DOM, HTML, relation
+DOM is Document Object Model, which is a platform and interface for programming language or script to dynamically
+access, update the content of a document.
+W3C DOM standard contains 3 different parts: 
+HTML DOM : standard model for HTML document
+XML DOM : standard model for XML document
+Core DOM : standard for all document types
+
+When a web page is loaded, the browser creates a Document Object Model(HTML DOM) of the page.
+
+4. XML, HTML
+XML: focus on carry data
+HTML: focus on display data with predefined tags.
+
+5. jQuery selector
+$ : dollar sign is jQuery namespace(reuse of names / prevent naming confliction)
+$(document)
+-select by id : $("#id")
+-select by class : $(".class")
+-select by tag : $("tag")
+//*** if both id is selected and define the property, so does the class, then the id defination will
+take effect; general rule: the more specific one will take effect
+
+6. How to modify page safely
+$(document).ready(function(){}); // exectue only after the DOM is loaded, could have more than one block per html file
+$(window).load(function(){}); // execute after all the elements are loaded(e.g. iframe, images), can have only
+one in html
+
+7. click function
+$("#btn1").click(function(){
+
+})
+
+8. show and edit text(html)
+-show text : $("p1").text()
+-edit text : $("p1").text("change")
+-edit html : $("p1").html("<b>New Style<b>")
+
+9. select specific element
+$("li:odd"), $("li:even"), $("li:first"), $("li:last")
+$("a[target = 'google_link']");
+$("p.x").eq(2);
+$("p:contains('Java')");
+$("#state").find("option[value = 'MA']").attr("selected", true);
+
+10. jQuery each function, change css
+$("li:even").each(function(index, item){
+	$(item).css("color", "red");
+})
+
+11. in browser, this refers to the "window", in Node.js this refers to global scope
+
+12. show / change attribute
+$(this).attr("foo"); $(this).prop("style") //.prop cant select user defined attributes
+$(".a2").attr("href", "http://www.baidu.com");
+
+
+
+
+

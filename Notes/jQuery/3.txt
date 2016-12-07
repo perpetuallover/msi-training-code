@@ -1,0 +1,41 @@
+1. event propagation
+3 phases:
+-capturing : detect there is an event but don't konw where
+-targeting : locate where is the event
+-bubbling : handle the event, could be itself or it's parent or more than 1 elements handle the event
+
+2. event target, event current target
+$("#p").click(function(event){
+	console.log(event.eventPhase, event.target.id, event.currentTarget.id);
+})
+target : where(which element shoot the event)
+current : which element handing the event
+
+if target = current, it's in phase 2: targeting
+if target != current, it's in phase 3: bubbling
+
+3. how to prevent event bubbling
+
+return false;
+
+4. $("#input").change(function(){})
+	var content = $("#input").val();
+	$("#input").val(content.toUpperCase());
+
+5. customize function
+$("#p").on("customize", function(){
+	
+})
+$("#p").on("click", function(){
+	$("#p").trigger("customize");
+})
+
+6. one time function
+// execute only once
+$("#p").one("click", function(){})
+
+7. jQuery object and DOM object
+get, convert
+$("p")              $("p").get(1) / $("p")[1]
+difference?
+DOM object is singleton, jQuery object is shallow copy which will boost the performence of multi-threading

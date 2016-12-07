@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.kenny.beans.Solutijon&apos; to &apos;Solution&apos;&#x0D;&#x0A;- Original project: &apos;Math&apos;&#x0D;&#x0A;- Original element: &apos;com.kenny.beans.Solutijon&apos;&#x0D;&#x0A;- Renamed element: &apos;com.kenny.beans.Solution&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Solutijon&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.kenny.beans{Solutijon.java[Solutijon" matchStrategy="1" name="Solution" qualified="false" references="true" similarDeclarations="false" stamp="1477263108696" textual="false" version="1.0"/>
+</session>

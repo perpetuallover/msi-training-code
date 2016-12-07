@@ -1,0 +1,22 @@
+1. div tree structure lead inheritance
+
+ng-repeat / ng-switch, ng-view, ng-include will generate child scope
+
+2. scope.$apply()
+
+== $rootScope.$digest()
+// $rootScope need to be injected
+app.controller("mainCtrl", ["$rootScope", "$scope", function($scope, $rootScope){}])
+
+scope.$apply(), using this way can make child scope let parent scope know data changing.
+
+3. $parent.value to get parent scope value
+
+
+4. if value is inherited from parent, object will always inherited from parent scope even it has been changed, 
+primitive type will inherit first but when the value changes it will create a new one in its own scope.
+
+dont have: both inherit from parent
+have     : both use its own value
+update   : primitve type will lead generate new one since it is immutable cant change value, object value
+		will still inherited from parent.

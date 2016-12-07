@@ -1,0 +1,5 @@
+127.0.0.1 - - [17/Oct/2016:09:29:16 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [17/Oct/2016:09:29:47 -0400] "GET /JSPDemo/page1.jsp HTTP/1.1" 200 465
+0:0:0:0:0:0:0:1 - - [17/Oct/2016:09:29:47 -0400] "GET /JSPDemo/css/bootstrap.min.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [17/Oct/2016:09:29:47 -0400] "GET /favicon.ico HTTP/1.1" 404 973
+0:0:0:0:0:0:0:1 - - [17/Oct/2016:09:29:52 -0400] "GET /JSPDemo/page2.jsp?message=request HTTP/1.1" 200 402

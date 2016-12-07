@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo04</title>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+</head>
+<body>
+	<div id = "example"></div>
+	<!-- slow because need translate babel to javascript -->
+	<script type = "text/babel">
+		var HelloMessage = React.createClass({ //like customised directive
+			render: function(){
+				var age = this.props.age;
+				if(age < 30){
+					return <h1>Hello {this.props.name}, you are very young!</h1>
+				}else{
+					// return <h1> Hello {this.props.name}, welcome!</h1>
+					return <span> Hello {this.props.name}</span>
+				}
+			}
+		});
+		ReactDOM.render(
+			<HelloMessage name = "Alice" age = "55"></HelloMessage>,
+			document.getElementById("example")
+		);
+	</script>
+
+</body>
+</html>

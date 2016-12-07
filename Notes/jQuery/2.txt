@@ -1,0 +1,38 @@
+1. append, appendTo; prepend, prependTo
+$("#list").append("<p>new line</p>");
+$("<p>new line2</p>").prepend("#list");
+
+$("#list").prepend("<p>insert 1st line</p>");
+$("<p>insert 1st line</p>").prependTo("#list");
+
+// happens between parent and child element
+// * all start with $
+2. before, insertBefore, after, insertAfter
+$("list").find("li").eq(1).before("<p>new line</p>");
+$("<p>new line</p>").insertBefore("#itemlist");
+$("list").find("li").eq(1).after("<p>new line</p>");
+$("<p>new line</p>").insertAfter("itemlist");
+
+// happens between siblings
+
+3. remove(), detach(), empty()
+remove(): remove whole element
+detach(): remove and return the whole element, can be reverted
+empty(): only remove the child elements
+
+4. find parent elements
+$("#child").parents().each(function(index, item){
+	$(item).attr("id");
+})
+$("#child").parentsUntil("#mydiv").each(function(index, item){ // exclusive
+	$(item).attr("id");
+})
+$("#child").closest("div").attr("style"); // inclusive
+
+5. find child elements
+$("#parent").find("div").each(function(index, item){  // find all the div inside parent
+	$(item).
+})
+$("#parent").children().each(function(index, item){ // find only the direct children of parent
+	$(item).
+})

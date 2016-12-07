@@ -1,0 +1,12 @@
+1. traverse Object
+-var keys = Object.keys(obj)
+keys.forEach(function(key){
+	obj[key]	
+})
+
+-var props = Object.getOwnPropertyNames(obj)
+
+only Object.getOwnPropertyNames() can list the un-enumerable property.
+
+2. object to string function
+JSON.stringify(obj);

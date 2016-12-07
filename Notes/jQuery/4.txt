@@ -1,0 +1,34 @@
+1. hide show
+$("#p").hide(1000, function(){
+
+})
+$(".a").show("slow", function(){})
+
+2. Promise and Deffer in jQuery
+-Promise like:
+
+$.when($("li").eq(2).hide(500)).then(function(){
+	callback
+}).then()
+
+Promise is wrapper of callback
+Deferred is wrapper of Promise which can hold the data
+
+var defer = $.Deferred();
+$("#a").hide(1000, function(){
+	defer.resolve($(this).text());
+})
+
+defer.done(function(value){
+	console.log(value);
+})
+
+3. Ajax call
+$.when(
+	$.post("http://google.com/rest/add", params);
+	$.post("http://google.com/rest/multiply, params");
+).done(function(value1, value2){
+	$("#result").text(value1[0] / value2[0]);
+})
+
+.then for Promise, .done for deferred

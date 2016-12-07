@@ -1,0 +1,23 @@
+1. JS OOP: Inheritance
+// show the prototype of obj
+Object.getPrototypeOf(obj)
+// prove the prototype of obj
+obj.isPrototypeOf(obj2)
+
+2. how to make inheritance
+var Child = function(){}
+var Parent = function(){}
+
+-Child.prototype = new Parent();
+-Child.prototype = Object.create(Parent.prototype);
+ Child.prototype.constructor = Child;
+
+3. Prototype chain
+var c = new Child();
+c -> Child.prototype -> Parent.prototype -> Object.prototype -> null
+Child -> Function.prototype -> Object.prototype -> null
+
+4. Object.getPrototypeOf(Object)
+
+=== Function.prototype
+Object is a function name of function: Object()

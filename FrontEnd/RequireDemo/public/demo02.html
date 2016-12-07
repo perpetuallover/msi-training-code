@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo02</title>
+	<script src = "js/require.js"></script>
+	<script>
+	// async loaded function without infuluence body
+		require(["js/b"], function(){
+			alert("load finished");
+		});
+	</script>
+</head>
+<body>
+<h1>Body is loaded</h1>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo02</title>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+</head>
+<body>
+	<div id = "example"></div>
+	<script type = "text/babel">
+		var names = ["Alice", "Bob", "Steven"];
+		ReactDOM.render(
+			<div>
+				{ // curly brace javascript, can't use ":"!!! one curely brace block can write only one line, miss some minor thing will lead the whole program crush, e.g. miss the ending tag </>
+					names.map(function(name){
+						return <div>Hello {name}!</div>
+					}) 
+
+				}
+				<p>Another</p>
+				{
+					<p>Hello {names[0]}</p>
+				}
+				// {
+				// 	var x = 9
+				// }
+				{
+					console.log("hello")
+				}
+
+			</div>,
+			// <p>another</p>, can only have one div
+			document.getElementById("example")
+		);
+	</script>
+
+</body>
+</html>

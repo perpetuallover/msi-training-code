@@ -1,0 +1,38 @@
+1.
+javascript variable is loose-type, can assign any type of value.
+
+2.
+if not assign initial value, the default value will be undefined.
+
+3.
+undefined: not assign the value yet; not defined: not even declare the parameter
+x == undefined                         type of x == undefined
+
+4.
+2 ways to write the function:
+- function(argument){}   have hoisting feature
+- var f1 = function(){} dont have
+var v1 = a; local variable have hoisting feature(with undefined value)
+v2 = b;	    global variable dont have, can be delete
+
+5. arguments: not an array only have .length attribute, can be converted to array: 
+[].slice.call(arguments), Array.prototype = []; Array.from(arguments);
+
+6. array.forEach(function(value, index, array){})
+
+7. 
+-slice: array.silce(start, end - 1) will not affect the original array, 
+	Array.prototype.slice.call(array-like-object), convert to array
+-splice: array.splice(start, deleteCount, item1, 2, ...)
+		can be negative, 0/omitted, to be add after start
+
+8.
+slef evoking function:
+(function(nums){})(nums);
+
+9.
+== compare only the value, === compare the type first then value,
+== for object is compare their reference
+null == undefined, null !=== undefined, null === null, undefined === undefined, NaN !== NaN
+for arithemetic operation, null = 0, undefined will lead NaN result
+1 + null = 1; 1 + undefined = NaN

@@ -1,0 +1,45 @@
+1. AngularJS
+MVW framwork: MVC or MVVM; key-feature: data-binding
+
+2. start block of AngularJS
+<script>
+	var app = angular.module("mainApp", []); // DI: dependency injection
+	app.controller("homeCtrl", ["$scope", function($scope){
+		$scope.message = "Hello World!";
+	}])
+</script>
+<body ng-app="mainApp">
+<div ng-controller="homeCtrl">
+<p>{{message}}</p>
+
+// in angular app, there is only one main module and many dependent module; but can have many controllers
+
+3. watch value change
+$scope.$watch("count", function(newValue, oldValue){
+	console.log(newValue, oldValue);
+})
+
+#4. count watchers in the scope: use scope.$$watchers.length;
+
+5. data binding
+
+one-way binding: {{variable}}, {{function()}}, ng-bind="", read only
+two-way binding: ng-model=""(normally appear in the input tag), read-write
+one-time binding: {{::variable}}, will discard the future change
+
+6. build-in filter
+
+{{money | currency}} , etc
+
+7. angular have its own html tags
+ng-click="function()" ng-change
+ng-init="variable = 'Hello World!'"
+
+8. angular2 define controller
+// with out $scope naming space
+app.controller("angular2", function(){
+	this.value = 100;
+})
+// define new naming sapce "a2"
+<div ng-controller="angular2 as a2">
+	<p>{{a2.value}}</p>

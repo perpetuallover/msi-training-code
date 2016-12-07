@@ -1,0 +1,54 @@
+1. call back function
+execute in the future
+
+2. monitor value change
+var obj = {
+	name: "Alice"
+}
+// function(changes){...} is a callback function so that it can monitor all the changes after the normal
+   code finish executed
+Object.observe(obj, function(changes){  
+	changes.forEach(change){
+		console.log(change.type, change.name, change.oldValue);
+	}
+});
+
+obj.name = "Lucy"
+
+3. Callback Function Hell
+function Async(arg, callback){
+	console.log(arg);
+	setTimeout(function(){
+		callback(arg);
+	}, 1000);
+}
+
+Async(1, function(arg){
+	Async(arg, function(arg){
+		Async(arg, function(arg){...}
+	})
+})
+
+4. How to solve callback function hell
+   Using Primise
+e.g. var f1 = function(value){
+	return new Promise(function(resolve, reject){
+		if(value > 100){
+			resolve(value * 2);
+		}else{
+			reject("Value is too small!");
+		}
+	})
+}
+
+f1(80).then(funciton(value){
+	// resolve branch
+}, function(value){
+	// reject branch
+})
+f1(200).then(function(value){
+	return f1(value); // use "return" keyword to return a promise for next "then"
+}).then(function(value){
+	console.log(value);
+})
+

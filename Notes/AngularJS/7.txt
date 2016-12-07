@@ -1,0 +1,28 @@
+1. Angular build-in Services
+$scope, $location, $sce, $timeout, $interval, $http, $resource // for REST service
+$injector // can inject all module
+
+$scope.url = $location.absUrl;
+$scope.message = "<b>BOLD TRUST ME!</b>";
+$scope.scemessage = $sce.trustAsHtml($scope.message);
+$timeout(function(){
+	console.log("delayed message");
+}, 1000)
+$injector.invoke(function($interval){
+	$interval(function(){
+		console.log("print every one second");
+	}, 1000)
+})
+
+$http.get("rest/service").then(function(resp){
+	$scope.data = resp.data;
+})
+$http.get/post/put/delete
+$http.jsonp(url).then(function(resp){
+	
+})
+
+var resource = $resource("/rest/service"); // hold the REST services module for the future use
+resource.save().$promise.then(function(resp){
+	//save() like post
+})

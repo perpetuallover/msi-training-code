@@ -1,0 +1,13 @@
+<div>
+	<h2>Display employees one-by-one</h2>
+	<h3>Name : {{current.name}}</h3>
+	<h3>City: {{current.address.city}}</h3>
+	<h3>State: {{current.address.state}}</h3>
+	<h3>Age: {{current.age}}</h3>
+	<div>
+		<button class = "btn btn-default" ng-click = "goPrevious()" ng-disabled = "c==0">Previous</button>
+		<button class = "btn btn-default" ng-click = "goNext()" ng-disabled = "c == empList.length - 1">
+			Next
+		</button>
+	</div>
+</div>

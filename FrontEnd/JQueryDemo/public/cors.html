@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btn").on("click", function(){
+				// $.when(
+				// 	$.get("welcome.html")
+				// ).done(function(value){
+				// 	$("#welcome").text(value)
+				// });
+				$.get("http://www.localhost:8080/SpringMVCDemo/welcome.html").then(function(resp){
+					$("#welcome").html(resp);
+				});
+			})
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+	<!-- expression language is still popular -->
+		<h1>CORS Issue</h1>
+		<button id="btn">Welcome</button>
+		<h2>Welcome Message: <span id="welcome"></span></h2>
+		
+	</div>
+
+</body>
+</html>

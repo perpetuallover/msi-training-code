@@ -1,0 +1,39 @@
+1. JS OOP Concept: constructor
+// constructor class name first letter should be capitalized
+var Vehicle = function(){
+	this.price = 1000;
+}
+
+var v = new Vehicle(); 
+// add new key word Vehicle() becomes a constructor which returns a Vehicle object.
+var v2 = Vehicle(); 
+// without new key word Vehicle() is a normal function, 
+and v2 == undefined since there is no return value.
+
+2. How to make a constructor always return an object, even without new key word
+
+var Person = function(name){
+	if(!(this instanceof Person)){
+		return new Person();
+	}
+	this.name = name;
+}
+
+3. Constructor with return value
+return type is primitive
+function c1(){
+	this.value = 100;        // with new keyword will omit return value and return an instance of c1
+	return 101;		//without new keyword will return 101
+}
+return type is object, will always return the object, with or without new, constructor failed
+function c2(){
+	this.value = 100;
+	return {value : 201};
+}
+constructor works, run as a normal function will return the global scope of Node.js
+function c3(){
+	this.value = 100;
+	return this;
+}
+
+* with new keyword, [var] call the function else is the [global scope] call the function [this]

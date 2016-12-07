@@ -1,0 +1,13 @@
+127.0.0.1 - - [04/Nov/2016:09:34:38 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:34:38 -0400] "GET /Security02/WEB-INF/pages/hello.jsp HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:34:47 -0400] "GET /Security02/WEB-INF/pages/hello.html HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:34:57 -0400] "GET /Security02/WEB-INF/pages/hello.html HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:34:57 -0400] "GET /favicon.ico HTTP/1.1" 404 973
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:02 -0400] "GET /Security02/hello.html HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:06 -0400] "GET /Security02/hello.jsp HTTP/1.1" 404 991
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:22 -0400] "GET /Security02/WEB-INF/pages/login.jsp HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:30 -0400] "GET /Security02/WEB-INF/pages/login.html HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:37 -0400] "GET /Security02/login.html HTTP/1.1" 200 1136
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:37 -0400] "GET /Security02/js/jquery-1.12.0.min.js HTTP/1.1" 200 97362
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:51 -0400] "POST /Security02/j_spring_security_check HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [04/Nov/2016:09:35:51 -0400] "GET /Security02/login.html?login_error=1 HTTP/1.1" 200 1137

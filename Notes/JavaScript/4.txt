@@ -1,0 +1,27 @@
+1. attribute of properties
+-configurable
+-writable
+-enumerable
+
+obj.x = y;
+In this way both the configurable, writable and enumerable is true;
+
+Object.defineProperty(obj, newProperty, {
+	value: x
+});
+if do not specified both configurable, writable and enumerable is false;
+
+Object.defineProperty(obj, np, {
+	value: a,
+	configurable: true,
+	writable: true,
+	enumerable: true
+});
+
+2. status of object
+Object.preventExtensions(obj) : cant add new property(field), use Object.isExtensible(obj) to check
+Object.seal(obj) : cant delete property, Object.isSealed(obj)
+Object.freeze(obj) : cant update property(ready only), Object.isFrozen(obj)
+
+operation is not reversible
+

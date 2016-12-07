@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+		<script src = "js/jquery-3.1.0.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#btn1").click(function(){
+					console.log($("#para").text()); // select by id
+					console.log($(".myclass").text()); // select by class
+					console.log($("h4").text()); // slect by tag
+				});
+				$("#btn2").click(function(){
+					$("#para").text("<b> The econd paragraph is changed</b>");
+					$(".myclass").html("<b> The second paragraph is changed</b>");
+					$("#para").text("<b> The second paragraph is changed</b>");
+					// without jquery, how to change a paragraph in pure javascript?
+					document.getElementById("para2").innerHTML = "<b>Another paragraph is changed</b>";
+				});
+				$("#btn3").click(function(){
+					console.log($("li:first").text());
+					console.log($("li:last").text());
+					$("li:odd").each(function(index, item){
+						console.log($(item).text());
+						$(item).css("color", "red");
+					});
+					$("li:even").each(function(index, item){
+						console.log($(item).text());
+						$(item).css("color", "blue");
+					});
+					// What if I want to have some element that has attribute target = "_blank"?
+					var url = $("a[target = '_blank']");
+					console.log(url.text());
+					url.attr("href", "http://www.yahoo.com");
+					console.log("foo: by attr " + $(this).attr("foo")); //attr? 
+					console.log("foo: by prop " + $(this).prop("foo"));
+				});
+				$("#btn4").click(function(){
+					console.log("3rd paragraph: " + $("p.x").eq(2).text()); // $("p.x : nth-child(2)")
+					console.log("Paragraph containing Java: " + $("p:contains('Java')").text());
+					//$("#state").val("NJ");
+					$("#state").find("option[value = 'MD']").attr("selected", true);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>JQuery Selectors</h1>
+			<hr>
+			<div>
+				<h2>Advanced Selectors</h2>
+				<div>
+					<ul>
+						<li>Item1</li>
+						<li>Item2</li>
+						<li>Item3</li>
+						<li>Item4</li>
+						<li><a href = "http://www.google.com" target = "_blank"> Google</a></li>
+
+					</ul>
+					<button class="btn btn-default" id="btn3" foo = "bar">Select Items</button>
+				</div>
+			</div>
+			<div>
+				<h2>Basic Selector</h2>
+				<p id="para">Select this paragraph by ID</p>
+				<p class="myclass">Select this paragraph by Class</p>
+				<h4> Select this header by Tag Name</h4>
+				<p id = "para2"> This is another paragraph </p>
+				<button class = "btn btn-primary" id = "btn1"> Select</button>
+				<button class = "btn btn-primary" id = "btn2"> Change</button>
+
+				<div>
+					<p class = "x">Java and J2EE</p>
+					<p class = "x">HTML, CSS and Bootstrap</p>
+					<p class = "x">Angular JS and Node</p>
+					<p class = "x">SQL and PL/SQL</p>
+					<p class = "x">
+						State:
+						<select id = "state">
+							<option value = ""></option>
+							<option value = "NJ">New Jersey</option>
+							<option value = "NY">New York</option>
+							<option value = "MD">Maryland</option>
+						</select>
+					</p>
+					<button class = "btn btn-warning id" id = "btn4"> Select Paragraph</button>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

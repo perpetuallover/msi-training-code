@@ -1,0 +1,11 @@
+1. Angular filter
+app.filter("reverse", function(){
+	return function(str){
+		return str.split("").reverse().join("");
+	}
+})
+// reverse is the returned function, message is the parameter
+<p>{{message | reverse}}</p>
+
+// for multiple variable use : to separate
+e.g. <p>{{first_param | my_filter : second_param}}</p>

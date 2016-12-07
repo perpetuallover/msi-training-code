@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo07</title>
+	<script src = "js/browser.min.js"></script>
+	<script src = "js/react.min.js"></script>
+	<script src = "js/react-dom.min.js"></script>
+	<style>
+		p#x{
+			color: red;
+		}
+		p.y{
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id = "example"></div>
+	<hr>
+	<div>
+		<p id = "x" class = "y" onclick = "alert('ok')">This is a paragraph</p>
+	</div>
+	<script type = "text/babel">
+		var MyComponent = React.createClass({
+			handleClick : function(){
+				console.log("Clicked");
+				this.refs.myTextInput.focus();
+			},
+			handlePara: function(){
+				console.log(this.refs.para.innerHTML);
+			},
+			render: function(){
+				return(
+					<div>
+					// ref = id
+						<input type = "text" ref = "myTextInput"/> 
+						<br />
+						<input type = "button" value = "Focus on Input" onClick = {this.handleClick}/>
+						<p id = "x" class = "y" ref = "para" onClick = {this.handlePara}>This is a paragraph</p>
+					</div>
+				);
+			}
+		});
+		ReactDOM.render(
+			<MyComponent />,
+			document.getElementById("example")
+		);
+	</script>
+</body>
+</html>

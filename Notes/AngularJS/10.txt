@@ -1,0 +1,8 @@
+1. multiple Ajax call promise
+
+$q.all([
+	$http.get();
+	$http.post();
+]).then(function(result){
+	return result[0].data / result[1].data;
+})

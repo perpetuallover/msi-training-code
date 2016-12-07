@@ -1,0 +1,105 @@
+<!-- event propagation: 3 phases
+1. capturing(top down), know there is one but dont know where
+2. targeting, locating where is that event
+3. (optional)bubbling(bottom up), handle the event, could be itself or it's parent or more than 1 things handle the event
+
+CSS(style sheet to render the page) and JQuery both of them are about selectors 
+
+3 phases
+difference between target and current target
+how to prevent bubbling up
+
+-->
+
+<!-- DOM obj is tag and components in between -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo03</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> <!-- rel? --> 
+		<script src = "js/jquery-3.1.0.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#inner").click(function(event){ //event?
+					display(event);
+					//event.stopPropagation(); //prevent bubbling
+
+					return false;
+				});
+				$("#outer").click(function(event){
+					display(event);
+				});
+				$("#name").change(function(){
+					var content = $("#name").val();
+					$("#name").val(content.toUpperCase());
+				})
+				$("#first").on("doChange", function(){ //on is better .on .off .one(only run once)
+					$(this).text("The paragraph is changed");
+				});
+				$("#btn").on("click", function(){
+					$("#first").trigger("doChange");
+				});
+				$("#second").one("click", function(){
+					console.log("The second paragraph is clicked");
+				});
+				$("#verify").on("click", function(){
+					var first = $("p").eq(0); // Get a jquery object
+					console.log("Use eq: " + first.text()); //1. jquery obj can use jQuery functions 2. jQuery will return the different objects when get it twice
+					//convert DOM to jQuery obj just use $, convert JQuery obj to DOM obj $(selector).get(0)?
+					//use $(selector).length to check whether a element is exist
+					var second = $("p").get(1); // Get a DOM object
+					console.log("Use get: " + second.innerHTML);
+					var second2 = $("p")[1]; // Get a DOM object in another way
+					console.log("second == second2? " + (second == second2));
+					var first2 = $("p").eq(0);
+					console.log("frist == first2? " + (first == first2));
+				});
+			});
+			function display(evt){
+				console.log("Event Phase: " + evt.eventPhase);
+				console.log("Event Target: " + evt.target.id); // target is the component who trigger the event
+				console.log("Event Current Target: " + evt.currentTarget.id); // currentTarget it the component who handles the event
+			};
+			function toUpper(){
+				var content = $("#name").val();
+				$("#name").val(content.toUpperCase());
+			}
+		</script>
+		<style>
+		/*div is slector here*/
+			div#outer{ 
+				width: 200px;
+				height: 200px;
+				border-radius: 10px;
+				padding: 20px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class = "container">
+			<h1>JQuery Events</h1>
+			<hr>
+			<div>
+				<h3>Event Propagation</h3>
+				<div id = "outer">
+					<button id = "inner">Click Me(Inner) Looooooooooooooooooooooooooooooooong</button>
+				</div>
+			</div>
+			<hr>
+			<div>
+				<h3>Customized Event</h3>
+<!-- 			for textview	onfocus onblur onchang -->
+<!-- 1. $(selector).on("eventname", "eventhandler")
+2. $(selector).trigger("eventname") -->
+				<p id = "first">First Paragraph</p>
+				<p id = "second"> Second Paragraph</p>
+				<button id = "btn" class = "btn btn-danger">Change</button>
+				<button id = "verify" class = "btn btn-default">Verify</button>
+			</div>
+			<hr>
+			<input type = "text" id = "name" onchange = "toUpper()"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test01</title>
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				$("p[foo = 'bar']").text("changed");
+				//$(this).attr("foo").text("changed2");
+			})
+
+		})
+	</script>
+</head>
+<body>
+<p foo = "bar">FOO BAR</p>
+<p>Other One</p>
+<button id = "btn1">Change</button>
+</body>
+</html>
